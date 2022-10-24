@@ -1,0 +1,721 @@
+@font-face {
+    font-family: BenzinBold;
+    src: url('BenzinBold.ttf');
+}
+
+@font-face {
+    font-family: AvertaBold;
+    src: url('AvertaBold.otf');
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.target-player {
+    width:260px;
+    height:135px;
+    position:absolute;
+    top:36.2%;
+    left:33.5%;
+    text-align: center;
+
+}
+
+#playername {
+    margin-left:10px;
+    margin-top:13.8px;
+    color:#ffffff;
+    font-size: 23.64px;
+    font-family: BenzinBold;
+}
+
+.post-game-orange {
+    color:white;
+    margin-top:250px;
+    margin-left:200px;
+    width:1500px;
+    height:300px;
+}
+.post-game-blue {
+    color:white;
+    margin-top:100px;
+    margin-left:200px;
+    width:1500px;
+    height:300px;
+}
+
+.row1 {
+    width:300px;
+}
+
+.bg {
+    width:1920px;
+    height:1080px;
+    background: url('MAIN_ARTBOARD.png');
+    position:absolute;
+    top:0px;
+}
+
+.columns-middle {
+    padding:7px;
+}
+table {
+    table-layout: fixed;
+}
+.target-player {
+    width:280px;
+}
+
+.target-player td, .target-player th {
+    width:60px;
+    height:60px;
+    /* border: 1px solid black; */
+    /* padding-left: 5px; */
+}
+.target-player tbody td {
+    font-family: BenzinBold;
+    font-size: 29px;
+}
+.target-player th {
+    font-family: BenzinBold;
+}
+.target-speed {
+    font-family: BenzinBold;
+    text-align: center;
+    position: fixed;
+    bottom: 100px;
+    right: 50px;
+    color: black;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+
+.replay-icon {
+    margin-left: -145px;
+    margin-top:15px;
+}
+
+#circular {
+    animation: rotation 2s infinite linear;
+}
+
+#arrow {
+    position:absolute;
+    margin-left:-130px;
+    margin-top:25px;
+}
+
+.target-replay {
+    margin-top: 80px;
+    margin-left: 270px;
+    width:360px;
+    text-align: center;
+    font-size:29px;
+    position:absolute;
+}
+
+.replay-bar {
+    background-image: url("REPLAY_BAR.png");
+    background-repeat:no-repeat;
+    width:100%;
+    height:64px;
+    margin-top:158.5px;
+    position:absolute;
+}
+
+#playmaker {
+    margin-left: 25px;
+    color:white;
+    font-size: 20px;
+    position:absolute;
+    width:200px;
+
+}
+
+#scorer { 
+    font-size: 20px;
+    position:absolute;
+    margin-left: -255px;
+    width:230px;
+    /* margin-top: 35px; */
+    color:white;
+}
+
+#nextup {
+    /* margin-left:-655px; */
+    position:absolute;
+}
+
+#next_up_blue {
+    position:absolute;
+    margin-left:-113px;
+    margin-top:6px;
+    width:35px;
+    height:35px;
+}
+#next_up_orange {
+    position:absolute;
+    margin-left:-43px;
+    margin-top:6px;
+    width:35px;
+    height:35px;
+}
+
+
+#speed {
+    margin-top:-27px;
+    margin-left:-127px;
+    position:absolute;
+    width: 90px;
+}
+
+.columns-middle2 {
+    padding:-7px;
+}
+
+.blue-cam {
+    margin-top: 720px;
+    color:red;
+    background-image: url("BLUE_REPLAY_CARD.png");
+    width: 650px;
+    height:200px;
+    background-repeat:no-repeat;
+}
+.orange-cam {
+    margin-top: 720px;
+    color:red;
+    background-image: url("ORANGE_REPLAY_CARD.png");
+    width: 650px;
+    height:200px;
+    background-repeat:no-repeat;
+
+}
+
+body {
+    font-family: BenzinBold;
+    background-color: black;
+}
+
+#stinger {
+    top:0px;
+    width:1920px;
+    height:1080px;
+    position: absolute;
+}
+
+.scoreboard {
+    color: white;
+    text-align: center;
+}
+.scorebug {
+    font-family: BenzinBold;
+    text-align: center;
+    position: fixed;
+    top: 15px;
+    left: 30px;
+    color: white;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+.team-info {
+    margin-left:7px;
+    margin-top:5px;
+    /* position:absolute; */
+    /* border:#ffffff 1px solid; */
+    text-align: center;
+    font-size: 30px;
+    padding:10px;
+    width:930px;
+    height:130px;
+}
+
+
+.scorebug-box {
+    position:relative;
+    font-size: 40px;
+    width:100%;
+    align-self: center;
+    background-image: url("SCOREBOARD.png");
+    background-repeat: no-repeat;
+    height:135px;
+    background-position:center;
+}
+
+/* team stuff alignment */
+.blue {
+    position:absolute;
+    margin-left:-445px;
+    margin-top:32px;
+    width:192px;
+    font-size:14.85px;
+    height:35px;
+
+}
+
+#bo {
+    position:absolute;
+    color:black;
+    margin-top:99px;
+    margin-left:-20px;
+    font-size:12px;
+    
+}
+
+.logo-crop {
+    position:absolute;
+    /* border:1px red solid; */
+    margin-top:10px;
+    margin-left:35px;
+    height: 160px;
+    width:100px;
+    background-image: url("LOGO_WHT.png");
+    background-size:100px;
+    background-repeat:no-repeat;
+}
+
+.logo-blue {
+    position:absolute;
+    margin-left:-239px;
+    margin-top:26px;
+    width:65px;
+    height:65px;
+}
+
+.time {
+    margin-left:-70px;
+    margin-top:16px;
+    position:absolute;
+    width:135px;
+    color:white;
+    font-family: AvertaBold;
+
+}
+
+.blue-score {
+    position:absolute;
+    margin-left:-133px;
+    margin-top:16px;
+    width:60px;
+    font-family: AvertaBold;
+}
+
+.orange-score {
+    position:absolute;
+    margin-left:67px;
+    margin-top:16px;
+    width:60px;
+    font-family: AvertaBold;
+
+}
+
+.logo-orange {
+    position:absolute;
+    margin-left:170px;
+    margin-top:26px;
+    width:65px;
+    height:65px;
+}
+
+.orange {
+    position:absolute;
+    margin-left:245px;
+    margin-top:32px;
+    width:192px;
+    height:35px;
+    font-size:14.85px;
+}
+
+.points-empty-blue {
+    position:absolute;
+    width:100px;
+    height:20px;
+    margin-top:50px;
+    margin-left:347px;
+}
+
+.points-empty-orange {
+    position:absolute;
+    width:100px;
+    height:20px;
+    margin-top:50px;
+    margin-left:455px;
+}
+
+.orange-points {
+    position: absolute;
+    width: 100px;
+    height:20px;
+    /* border:white 1px solid; */
+    margin-top: 52px;
+    margin-left:466px;
+    
+}
+
+.points_empty {
+    width:14px;
+    height:14px;
+}
+
+.points {
+    padding:2px;
+    /* border: red 1px solid; */
+    /* position:relative; */
+}
+
+#blue0 {
+    margin-top:18px;
+    margin-left:-42px;
+    position:absolute;
+}
+
+#blue1 {
+    margin-top:18px;
+    margin-left:-19px;
+    position:absolute;
+}
+
+#blue2 {
+    margin-top:18px;
+    margin-left: 5px;
+    position:absolute;
+}
+
+#blue3 {
+    margin-top:18px;
+    margin-left: 28px;
+    position:absolute;
+}
+
+#orange0 {
+    margin-top:18px;
+    margin-left: -42px;
+    position:absolute;
+}
+
+#orange1 {
+    margin-top:18px;
+    margin-left: -19px;
+    position:absolute;
+}
+
+#orange2 {
+    margin-top:18px;
+    margin-left: 5px;
+    position:absolute;
+}
+#orange3 {
+    margin-top:18px;
+    margin-left: 28px;
+    position:absolute;
+}
+
+
+
+.blue-points {
+    position: absolute;
+    width: 100px;
+    height:20px;
+    /* border:white 1px solid; */
+    margin-top: 52px;
+    margin-left:335px;
+}
+
+
+.series-score-box {
+    background-repeat: no-repeat;
+    background-position: center;
+    width:100%;
+    height:58px;
+}
+
+.series-games {
+    width:842px;
+}
+
+#scorebug-img {
+    width: 30%;
+    margin-top:-56px;
+    align-items: center;
+}
+
+.blue-boost {
+    font-family: BenzinBold;
+    text-align: center;
+    position: fixed;
+    top: 400px;
+    left: 15px;
+    color: white;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: transparent;
+}
+.orange-boost {
+    font-family: BenzinBold;
+    text-align: center;
+    position: fixed;
+    top: 400px;
+    right: 15px;
+    color: white;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: transparent;
+}
+
+.player1 {
+    font-family: BenzinBold;
+    min-width: 100px;
+}
+
+.player2 {
+    font-family: BenzinBold;
+    min-width: 100px;
+}
+
+.player3 {
+    font-family: BenzinBold;
+    min-width: 100px;
+}
+
+
+
+#data-boost1 {
+    width:40px;
+    position:absolute;
+    /* border: #ffffff 1px solid; */
+    margin-top:-5px;
+    margin-left:58.3px;
+    font-size: 11.7px;
+
+}
+#data-boost2 {
+    width:40px;
+    position:absolute;
+    /* border: #ffffff 1px solid; */
+    margin-top:-5px;
+    margin-left:58.3px;
+    font-size: 11.7px;
+}
+#data-boost3 {
+    width:40px;
+    position:absolute;
+    /* border: #ffffff 1px solid; */
+    margin-top:-5px;
+    margin-left:58.3px;
+    font-size: 11.7px;
+}
+
+#data-boost4 {
+    width:40px;
+    position:absolute;
+    /* border: #ffffff 1px solid; */
+    margin-top:-5px;
+    margin-left:-99.3px;
+    font-size: 11.7px;
+
+}
+#data-boost5 {
+    width:40px;
+    position:absolute;
+    /* border: #ffffff 1px solid; */
+    margin-top:-5px;
+    margin-left:-99.3px;
+    font-size: 11.7px;
+}
+#data-boost6 {
+    width:40px;
+    position:absolute;
+    /* border: #ffffff 1px solid; */
+    margin-top:-5px;
+    margin-left:-99.3px;
+    font-size: 11.7px;
+}
+
+.boost-gauge-orange {
+    font-family: BenzinBold;
+    width: 200px;
+    height: 62px;
+    /* border-radius: 1.5em; */
+    position: relative;
+    background-repeat: no-repeat;
+    background-image: url('PLAYER_BOOST_ORANGE.png');
+}
+.boost-gauge-blue {
+    font-family: BenzinBold;
+    width: 202px;
+    height: 62px;
+    /* border-radius: 1.5em; */
+    position: relative;
+    background-repeat: no-repeat;
+    background-image: url('PLAYER_BOOST_BLUE.png');
+}
+
+#player1l {
+    width:160px;
+    height:16px;
+    margin-top: -5px;
+    margin-left: 31px;
+    position:absolute;
+}
+
+
+#player2l {
+    width:160px;
+    height:16px;
+    margin-top: -5px;
+    margin-left: 31px;
+    position:absolute;
+}
+
+
+
+
+#player3l {
+    width:160px;
+    height:16px;
+    margin-top: -5px;
+    margin-left: 31px;
+    position:absolute;
+}
+
+
+#player1b {
+    width:158px;
+    height:16px;
+    margin-top: -5px;
+    margin-left: 8px;
+    position:absolute;
+    transform: rotate(180deg);
+}
+
+.progress {
+    background:url("BOOST_METER_EMPTY.png");
+}
+
+#player2b {
+    width:158px;
+    height:16px;
+    margin-top: -5px;
+    margin-left: 8px;
+    transform: rotate(180deg);
+    position:absolute;
+}
+
+/* .progress-bar {
+    height:80%;
+    margin-top:1.55px;
+    margin-left:3.5px;
+} */
+
+#blue {
+    height:80%;
+    margin-top:1.55px;
+    margin-left:3.5px;
+
+    background-image: url("BOOST_METER_BLUE.png")
+}
+
+#orange {
+    height:90%;
+    margin-top:.55px;
+    margin-left:3.6px;
+    background-image: url("BOOST_METER_ORANGE.png")
+
+}
+
+
+#player3b {
+    width:158px;
+    height:16px;
+    margin-top: -5px;
+    margin-left: 8px;
+    transform: rotate(180deg);
+    position:absolute;
+}
+
+
+
+.name-orange {
+    width:145px;
+    margin-top:-28px;
+    margin-left:-55px;
+    font-size: 12px;
+    position:absolute;
+    text-align: right;
+    /* border:#ffffff 1px solid; */
+}
+
+.name-blue {
+    width:145px;
+    margin-top:-28px;
+    margin-left:-87px;
+    font-size: 12px;
+    position:absolute;
+    text-align: left;
+    /* border:#ffffff 1px solid; */
+}
+
+.boost-focused {
+    margin-top: 620px;
+    margin-left: 1520px;
+}
+
+.progress-ring {
+    transform: rotate(90deg);
+}
+
+.progress-ring_circle {
+    transition: stroke-dashoffset 0.35s;
+    transform-origin: 50% 50%,
+}
+
+#boost-text {
+    position:absolute;
+    color:black;
+    /* border:1px red solid; */
+    width:100px;
+    height:30px;
+    margin-left:-160px;
+    margin-top:68px;
+    font-size:38px;
+}
+#kph {
+    position:absolute;
+    color:black;
+    width:100px;
+    height:30px;
+    margin-left:-160px;
+    margin-top:121px;
+    font-size:12.5px;
+}
+
+tr.separating_line {
+    border-top: 1px grey solid; 
+ }
+
+.camtarget {
+    background-image: url("target-player-blue.png");
+    width: 414px;
+    height:195px;
+    position: fixed;
+    bottom: 100px;
+    left: 50px;
+}
