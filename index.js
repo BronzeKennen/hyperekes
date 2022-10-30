@@ -167,6 +167,7 @@ $(() => {
         $(`.orange-points #orange${i}`).hide();
         $(`.blue-points #blue${i}`).hide();
     }
+    // var disabled = 0;
     var in_replay = 0;
     var match_ended = 0;
     var scorer = 'none';
@@ -178,7 +179,11 @@ $(() => {
     for(let i = 0; i < 4; i++) {
         if (livematches[i]["active"] === 1) {
             livematch = livematches[i];
-            // next_up = livematches[i+1];
+            // if (i < 3) {
+            //     next_up = livematches[i+1];
+            // } else {
+            //     disabled = 1;
+            // }
         }
     }
     // var livematch = getValue();
@@ -186,8 +191,8 @@ $(() => {
     var teams = getTeams();
     var blue_team_logo;
     var orange_team_logo;
-    // var next_up_blue;
-    // var next_up_orange;
+    var next_up_blue;
+    var next_up_orange;
     $('#nextup').animate({
         left:-250
     })
@@ -198,14 +203,15 @@ $(() => {
             orange_team_logo = teams[i]['logo'];
         }
     }
-    // for(let i = 0; i < teams.length; i++) {
-    //     if(teams[i]['name'].toUpperCase() === next_up["blue_team"]["display_name"]) {
-    //         next_up_blue = teams[i]['logo'];
-    //     } else if (teams[i]['name'].toUpperCase() === next_up['orange_team']['display_name']){
-    //         next_up_orange = teams[i]['logo'];
+    // if (disabled === 0) {
+    //     for(let i = 0; i < teams.length; i++) {
+    //         if(teams[i]['name'].toUpperCase() === next_up["blue_team"]["display_name"]) {
+    //             next_up_blue = teams[i]['logo'];
+    //         } else if (teams[i]['name'].toUpperCase() === next_up['orange_team']['display_name']){
+    //             next_up_orange = teams[i]['logo'];
+    //         }
     //     }
     // }
-
 
     WsSubscribers.subscribe("game", "update_state", (d) => {
         $(".team-info .blue-score").text(d['game']['teams'][0]['score']);
@@ -334,67 +340,69 @@ $(() => {
             }
             
         }
-        // $('.post-game-blue .goals-team-blue').text(d['game']['teams'][0]['score'] + ' - ' + livematch["blue_team"]["display_name"]);
-        $('.post-game-orange .goals-team-orange').text(d['game']['teams'][1]['score'] + ' - ' + livematch["orange_team"]["display_name"]);
-        for (let player in d.players) {
-            if(d['players'][player]['id'].charAt(d['players'][player]['id'].length - 1) === '1') {
-                if (d['players'][player]['team'] === 0) {
-                    $('.post-game-blue .goals-team-blue').text(d['game']['teams'][0]['score'] + ' - ' + livematch["blue_team"]["display_name"]);
-                } else if (d['players'][player]['team'] === 1) {
-                    $('.post-game-blue .goals-team-blue').text(d['game']['teams'][1]['score'] + ' - ' + livematch["orange_team"]["display_name"]);
-                }
-                $(`.post-game-orange #p1`).text(d['players'][player]['name'].toUpperCase());
-                $(`.post-game-orange #score1`).text(d['players'][player]['score']);
-                $(`.post-game-orange #goals1`).text(d['players'][player]['goals']);
-                $(`.post-game-orange #assists1`).text(d['players'][player]['assists']);
-                $(`.post-game-orange #saves1`).text(d['players'][player]['saves']);
-                $(`.post-game-orange #shots1`).text(d['players'][player]['shots']);
-            }
-            else if(d['players'][player]['id'].charAt(d['players'][player]['id'].length - 1) === '2') {
-                $(`.post-game-orange #p2`).text(d['players'][player]['name'].toUpperCase());
-                $(`.post-game-orange #score2`).text(d['players'][player]['score']);
-                $(`.post-game-orange #goals2`).text(d['players'][player]['goals']);
-                $(`.post-game-orange #assists2`).text(d['players'][player]['assists']);
-                $(`.post-game-orange #saves2`).text(d['players'][player]['saves']);
-                $(`.post-game-orange #shots2`).text(d['players'][player]['shots']);
-            }
-            else if(d['players'][player]['id'].charAt(d['players'][player]['id'].length - 1) === '3') {
-                $(`.post-game-orange #p3`).text(d['players'][player]['name'].toUpperCase());
-                $(`.post-game-orange #score3`).text(d['players'][player]['score']);
-                $(`.post-game-orange #goals3`).text(d['players'][player]['goals']);
-                $(`.post-game-orange #assists3`).text(d['players'][player]['assists']);
-                $(`.post-game-orange #saves3`).text(d['players'][player]['saves']);
-                $(`.post-game-orange #shots3`).text(d['players'][player]['shots']);
 
-            }
-            else if(d['players'][player]['id'].charAt(d['players'][player]['id'].length - 1) === '5') {
-                if (d['players'][player]['team'] === 0) {
-                    $('.post-game-orange .goals-team-orange').text(d['game']['teams'][0]['score'] + ' - ' + livematch["blue_team"]["display_name"]);
-                } else if (d['players'][player]['team'] === 1) {
-                    $('.post-game-orange .goals-team-orange').text(d['game']['teams'][1]['score'] + ' - ' + livematch["orange_team"]["display_name"]);
+        if (match_ended == 0) {
+            for (let player in d.players) {
+                if(d['players'][player]['id'].charAt(d['players'][player]['id'].length - 1) === '1') {
+                    if (d['players'][player]['team'] === 0) {
+                        $('.post-game-orange .goals-team-orange').text(d['game']['teams'][0]['score'] + ' - ' + livematch["blue_team"]["display_name"]);
+                    } else if (d['players'][player]['team'] === 1) {
+                        $('.post-game-orange .goals-team-orange').text(d['game']['teams'][1]['score'] + ' - ' + livematch["orange_team"]["display_name"]);
+                    }
+                    $(`.post-game-orange #p1`).text(d['players'][player]['name'].toUpperCase());
+                    $(`.post-game-orange #score1`).text(d['players'][player]['score']);
+                    $(`.post-game-orange #goals1`).text(d['players'][player]['goals']);
+                    $(`.post-game-orange #assists1`).text(d['players'][player]['assists']);
+                    $(`.post-game-orange #saves1`).text(d['players'][player]['saves']);
+                    $(`.post-game-orange #shots1`).text(d['players'][player]['shots']);
                 }
-                $(`.post-game-blue #p1`).text(d['players'][player]['name'].toUpperCase());
-                $(`.post-game-blue #score4`).text(d['players'][player]['score']);
-                $(`.post-game-blue #goals4`).text(d['players'][player]['goals']);
-                $(`.post-game-blue #assists4`).text(d['players'][player]['assists']);
-                $(`.post-game-blue #saves4`).text(d['players'][player]['saves']);
-                $(`.post-game-blue #shots4`).text(d['players'][player]['shots']);
-            }
-            else if(d['players'][player]['id'].charAt(d['players'][player]['id'].length - 1) === '6') {
-                $(`.post-game-blue #p2`).text(d['players'][player]['name'].toUpperCase());
-                $(`.post-game-blue #score5`).text(d['players'][player]['score']);
-                $(`.post-game-blue #goals5`).text(d['players'][player]['goals']);
-                $(`.post-game-blue #assists5`).text(d['players'][player]['assists']);
-                $(`.post-game-blue #saves5`).text(d['players'][player]['saves']);
-                $(`.post-game-blue #shots5`).text(d['players'][player]['shots']);
-            }
-            else if(d['players'][player]['id'].charAt(d['players'][player]['id'].length - 1) === '7') {
-                $(`.post-game-blue #p3`).text(d['players'][player]['name'].toUpperCase());
-                $(`.post-game-blue #score6`).text(d['players'][player]['score']);
-                $(`.post-game-blue #goals6`).text(d['players'][player]['goals']);
-                $(`.post-game-blue #assists6`).text(d['players'][player]['assists']);
-                $(`.post-game-blue #saves6`).text(d['players'][player]['saves']);
-                $(`.post-game-blue #shots6`).text(d['players'][player]['shots']);
+                else if(d['players'][player]['id'].charAt(d['players'][player]['id'].length - 1) === '2') {
+                    $(`.post-game-orange #p2`).text(d['players'][player]['name'].toUpperCase());
+                    $(`.post-game-orange #score2`).text(d['players'][player]['score']);
+                    $(`.post-game-orange #goals2`).text(d['players'][player]['goals']);
+                    $(`.post-game-orange #assists2`).text(d['players'][player]['assists']);
+                    $(`.post-game-orange #saves2`).text(d['players'][player]['saves']);
+                    $(`.post-game-orange #shots2`).text(d['players'][player]['shots']);
+                }
+                else if(d['players'][player]['id'].charAt(d['players'][player]['id'].length - 1) === '3') {
+                    $(`.post-game-orange #p3`).text(d['players'][player]['name'].toUpperCase());
+                    $(`.post-game-orange #score3`).text(d['players'][player]['score']);
+                    $(`.post-game-orange #goals3`).text(d['players'][player]['goals']);
+                    $(`.post-game-orange #assists3`).text(d['players'][player]['assists']);
+                    $(`.post-game-orange #saves3`).text(d['players'][player]['saves']);
+                    $(`.post-game-orange #shots3`).text(d['players'][player]['shots']);
+
+                }
+                else if(d['players'][player]['id'].charAt(d['players'][player]['id'].length - 1) === '5') {
+                    if (d['players'][player]['team'] === 0) {
+                        $('.post-game-blue .goals-team-blue').text(d['game']['teams'][0]['score'] + ' - ' + livematch["blue_team"]["display_name"]);
+                    } else if (d['players'][player]['team'] === 1) {
+                        $('.post-game-blue .goals-team-blue').text(d['game']['teams'][1]['score'] + ' - ' + livematch["orange_team"]["display_name"]);
+                    }
+                  
+                    $(`.post-game-blue #p1`).text(d['players'][player]['name'].toUpperCase());
+                    $(`.post-game-blue #score4`).text(d['players'][player]['score']);
+                    $(`.post-game-blue #goals4`).text(d['players'][player]['goals']);
+                    $(`.post-game-blue #assists4`).text(d['players'][player]['assists']);
+                    $(`.post-game-blue #saves4`).text(d['players'][player]['saves']);
+                    $(`.post-game-blue #shots4`).text(d['players'][player]['shots']);
+                }
+                else if(d['players'][player]['id'].charAt(d['players'][player]['id'].length - 1) === '6') {
+                    $(`.post-game-blue #p2`).text(d['players'][player]['name'].toUpperCase());
+                    $(`.post-game-blue #score5`).text(d['players'][player]['score']);
+                    $(`.post-game-blue #goals5`).text(d['players'][player]['goals']);
+                    $(`.post-game-blue #assists5`).text(d['players'][player]['assists']);
+                    $(`.post-game-blue #saves5`).text(d['players'][player]['saves']);
+                    $(`.post-game-blue #shots5`).text(d['players'][player]['shots']);
+                }
+                else if(d['players'][player]['id'].charAt(d['players'][player]['id'].length - 1) === '7') {
+                    $(`.post-game-blue #p3`).text(d['players'][player]['name'].toUpperCase());
+                    $(`.post-game-blue #score6`).text(d['players'][player]['score']);
+                    $(`.post-game-blue #goals6`).text(d['players'][player]['goals']);
+                    $(`.post-game-blue #assists6`).text(d['players'][player]['assists']);
+                    $(`.post-game-blue #saves6`).text(d['players'][player]['saves']);
+                    $(`.post-game-blue #shots6`).text(d['players'][player]['shots']);
+                }
             }
         }
 
@@ -511,9 +519,23 @@ $(() => {
         for(let i = 0; i < 4; i++) {
             if (livematches[i]["active"] === 1) {
                 livematch = livematches[i];
-                // next_up = livematches[i+1];
+                // if (i < 3) {
+                //     next_up = livematches[i+1];
+                // } else {
+                //     disabled = 1;
+                // }
             }
         }
+        // if (disabled === 0) {
+        //     for(let i = 0; i < teams.length; i++) {
+        //         if(teams[i]['name'].toUpperCase() === next_up["blue_team"]["display_name"]) {
+        //             next_up_blue = teams[i]['logo'];
+        //         } else if (teams[i]['name'].toUpperCase() === next_up['orange_team']['display_name']){
+        //             next_up_orange = teams[i]['logo'];
+        //         }
+        //     }
+        // }
+
         series_score = livematch["scores_csv"];
         teams = getTeams();
         for(let i = 0; i < teams.length; i++) {
